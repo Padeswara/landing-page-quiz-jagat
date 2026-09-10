@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <title>Fakta atau Opini? — Kuis</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main class="game" aria-label="Kuis fakta dan opini">
+      <section
+        id="welcome"
+        class="screen welcome"
+        aria-labelledby="welcome-title"
+      >
+        <h1 id="welcome-title">Fakta atau Opini?</h1>
+        <p class="intro">
+          Kelihatannya mirip, tapi beda.<br />Bisa bedakan keduanya?
+        </p>
+        <div class="welcome-bottom">
+          <p class="quiz-meta">10 soal &middot; 5 fakta &middot; 5 opini</p>
+          <button id="start" class="primary">
+            Yuk, main! <span aria-hidden="true">↗</span>
+          </button>
+          <p class="footnote">Geser kartu. Tentukan pilihanmu.</p>
+        </div>
+      </section>
+
+      <section
+        id="play"
+        class="screen play"
+        hidden
+        aria-labelledby="question-heading"
+      >
+        <div class="play-top">
+          <span class="eyebrow">PILAH PERNYATAANNYA</span
+          ><span class="score-pill">Skor: <span id="score">0</span></span>
+        </div>
+        <div class="progress-label">
+          <h2 id="question-heading">
+            Soal <span id="question-number">01</span
+            ><span class="muted"> / 10</span>
+          </h2>
+          <span id="progress-percent">0%</span>
+        </div>
+        <div
+          class="progress-track"
+          role="progressbar"
+          aria-label="Soal selesai"
+          aria-valuemin="0"
+          aria-valuemax="10"
+          aria-valuenow="0"
+        >
+          <div id="progress-fill"></div>
+        </div>
+        <p class="question-prompt">Menurutmu, ini fakta atau opini?</p>
+        <div class="card-stage">
+          <div class="card-under card-under-back" aria-hidden="true"></div>
+          <div class="card-under card-under-middle" aria-hidden="true"></div>
+          <div class="card-under card-under-front" aria-hidden="true"></div>
+          <article
+            id="question-card"
+            class="question-card"
+            tabindex="0"
+            aria-label="Kartu pertanyaan. Gunakan panah kiri untuk opini atau panah kanan untuk fakta."
+          >
+            <div class="card-top">
+              <span>PERNYATAAN <span id="card-number">01</span></span>
+              <span aria-hidden="true">↗</span>
+            </div>
+            <div id="swipe-label" class="swipe-label" aria-hidden="true"></div>
+            <p id="question-text" aria-live="polite"></p>
+            <div class="card-bottom">
+              <span>BACA. PIKIR. PILIH.</span>
+            </div>
+          </article>
+        </div>
+        <div class="swipe-hint" aria-hidden="true">
+          <span>← Opini</span><span>geser kartu</span><span>Fakta →</span>
+        </div>
+        <div class="answer-buttons">
+          <button id="opinion" class="answer opinion">
+            <span aria-hidden="true">←</span> Opini</button
+          ><button id="fact" class="answer fact">
+            Fakta <span aria-hidden="true">→</span>
+          </button>
+        </div>
+        <p class="footnote">Bisa juga ketuk tombol untuk menjawab.</p>
+      </section>
+
+      <section
+        id="result"
+        class="screen result"
+        hidden
+        aria-labelledby="result-title"
+      >
+        <div class="eyebrow">10 SOAL. SELESAI!</div>
+        <h1 id="result-title">
+          Makin jeli,<br /><span class="purple">makin tahu.</span>
+        </h1>
+        <p class="intro" id="result-message"></p>
+        <div class="result-score">
+          <span>SKOR AKHIRMU</span
+          ><strong><span id="final-score">0</span><small> / 10</small></strong>
+          <p>jawaban benar</p>
+        </div>
+        <button id="restart" class="primary">
+          Main lagi <span aria-hidden="true">↻</span>
+        </button>
+        <p class="footnote">Fakta bisa dibuktikan. Opini adalah pendapat.</p>
+      </section>
+
+      <dialog
+        id="feedback"
+        aria-labelledby="feedback-title"
+        aria-describedby="feedback-description"
+      >
+        <div id="feedback-icon" class="feedback-icon" aria-hidden="true"></div>
+        <p class="eyebrow">JAWABANMU</p>
+        <h2 id="feedback-title"></h2>
+        <p id="feedback-description" hidden></p>
+        <button id="next" class="primary">
+          Lanjut <span aria-hidden="true">→</span>
+        </button>
+      </dialog>
+    </main>
+  </body>
+</html>
