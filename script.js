@@ -70,6 +70,14 @@ function renderQuestion() {
   $('#question-number').textContent = number;
   $('#card-number').textContent = number;
   $('#question-text').textContent = questions[current].text;
+  const nextQuestion = questions[current + 1];
+  $('#next-question-card').hidden = !nextQuestion;
+  $('#next-card-number').textContent = nextQuestion
+    ? String(current + 2).padStart(2, '0')
+    : '';
+  $('#next-question-text').textContent = nextQuestion ? nextQuestion.text : '';
+  $('.card-under-middle').hidden = current + 2 >= questions.length;
+  $('.card-under-back').hidden = current + 3 >= questions.length;
   $('#score').textContent = score;
   $('#progress-percent').textContent = `${current * 10}%`;
   $('#progress-fill').style.width = `${current * 10}%`;

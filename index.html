@@ -62,7 +62,22 @@
         <div class="card-stage">
           <div class="card-under card-under-back" aria-hidden="true"></div>
           <div class="card-under card-under-middle" aria-hidden="true"></div>
-          <div class="card-under card-under-front" aria-hidden="true"></div>
+          <article
+            id="next-question-card"
+            class="question-card card-under-front question-preview"
+            aria-hidden="true"
+            inert
+            hidden
+          >
+            <div class="card-top">
+              <span>PERNYATAAN <span id="next-card-number"></span></span>
+              <span>↗</span>
+            </div>
+            <p id="next-question-text"></p>
+            <div class="card-bottom">
+              <span>BACA. PIKIR. PILIH.</span>
+            </div>
+          </article>
           <article
             id="question-card"
             class="question-card"
