@@ -45,6 +45,19 @@ const questions = [
 const $ = (selector) => document.querySelector(selector);
 const card = $('#question-card');
 const dialog = $('#feedback');
+const cardColors = [
+  { background: '#fff3c4', border: '#e7d79c' },
+  { background: '#ffffff', border: '#ddd7cf' },
+  { background: '#eae1f9', border: '#d9caef' },
+  { background: '#e3edb7', border: '#cedc97' },
+  { background: '#f3dfd2', border: '#e5c8b6' },
+];
+const cardPoses = [
+  'translateY(0px) scaleX(1) rotate(0deg)',
+  'translateY(7px) scaleX(0.97) rotate(2deg)',
+  'translateY(14px) scaleX(0.94) rotate(-3deg)',
+  'translateY(21px) scaleX(0.91) rotate(4deg)',
+];
 let current = 0;
 let score = 0;
 let answered = false;
@@ -95,6 +108,13 @@ async function swipeCard(choice) {
 function renderQuestion() {
   answered = false;
   resetCard();
+  [card, $('#next-question-card'), $('.card-under-middle'), $('.card-under-back')]
+    .forEach((layer, offset) => {
+      const color = cardColors[(current + offset) % cardColors.length];
+      layer.style.setProperty('--card-background', color.background);
+      layer.style.setProperty('--card-border', color.border);
+      layer.style.setProperty('--card-pose', cardPoses[(current + offset) % cardPoses.length]);
+    });
   const number = String(current + 1).padStart(2, '0');
   $('#question-number').textContent = number;
   $('#card-number').textContent = number;
@@ -192,7 +212,7 @@ card.addEventListener('pointermove', (event) => {
   card.style.transform = `translateX(${distance}px) rotate(${Math.max(
     -18,
     Math.min(18, distance / 12)
-  )}deg)`;
+  )}deg) ${card.style.getPropertyValue('--card-pose')}`;
   const label = $('#swipe-label');
   label.textContent = distance < 0 ? 'OPINI' : 'FAKTA';
   label.style.color = distance < 0 ? '#7251d5' : '#53682b';

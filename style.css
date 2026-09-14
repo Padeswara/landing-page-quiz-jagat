@@ -18,6 +18,10 @@ body {
   min-height: 100dvh;
   display: grid;
   place-items: center;
+  background:
+    radial-gradient(ellipse at 25% 20%, #d9c9f4 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 75%, #dfe9bc 0%, transparent 50%),
+    #f2f2f2;
 }
 button {
   font: inherit;
@@ -46,11 +50,17 @@ button:hover {
   position: relative;
   overflow-x: hidden;
   overflow-y: auto;
-  background: var(--paper);
+  background: rgb(255 255 255 / 65%);
+  -webkit-backdrop-filter: blur(24px) saturate(140%);
+  backdrop-filter: blur(24px) saturate(140%);
   padding: 24px;
   display: flex;
   flex-direction: column;
   border: 1px solid #ffffff80;
+  border-radius: 24px;
+  box-shadow: 0 12px 40px rgb(36 35 41 / 8%),
+    0 2px 8px rgb(36 35 41 / 4%),
+    inset 0 1px 0 rgb(255 255 255 / 80%);
 }
 .screen {
   flex: 1;
@@ -196,29 +206,22 @@ button:hover {
 .card-under {
   position: absolute;
   inset: 0;
-  border: 1px solid #ddd4e9;
+  background: var(--card-background, #eae1f9);
+  border: 1px solid var(--card-border, #d9caef);
   border-radius: 14px;
   pointer-events: none;
 }
-.card-under-back {
-  background: #e0d6ed;
-  transform: translateY(21px) scaleX(0.91) rotate(4deg);
-}
-.card-under-middle {
-  background: #e6ddef;
-  transform: translateY(14px) scaleX(0.94) rotate(-3deg);
-}
-.card-under-front {
-  background: #ebe5f3;
-  transform: translateY(7px) scaleX(0.97) rotate(2deg);
+.card-under,
+.question-card {
+  transform: var(--card-pose, none);
 }
 .question-card {
   position: relative;
   z-index: 1;
   width: 100%;
   min-height: 220px;
-  background: #fffdf8;
-  border: 1px solid #ddd7cf;
+  background: var(--card-background, #fff3c4);
+  border: 1px solid var(--card-border, #e7d79c);
   border-radius: 14px;
   padding: 18px;
   display: flex;
