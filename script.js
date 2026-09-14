@@ -60,7 +60,36 @@ function resetCard() {
   drag = null;
   card.classList.remove('dragging');
   card.style.transform = '';
+  card.style.opacity = '';
   $('#swipe-label').style.opacity = '0';
+}
+
+async function swipeCard(choice) {
+  const startTransform = getComputedStyle(card).transform;
+  const pointerId = drag?.id;
+  drag = null;
+  card.classList.remove('dragging');
+  if (pointerId !== undefined && card.hasPointerCapture(pointerId)) {
+    card.releasePointerCapture(pointerId);
+  }
+
+  const direction = choice === 'opinion' ? -1 : 1;
+  const distance = $('.game').clientWidth + card.clientHeight;
+  const endTransform = `translateX(${direction * distance}px) rotate(${direction * 25}deg)`;
+  card.style.transform = endTransform;
+  card.style.opacity = '0';
+
+  const animation = card.animate(
+    [
+      { transform: startTransform, opacity: 1 },
+      { transform: endTransform, opacity: 0 },
+    ],
+    {
+      duration: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 350,
+      easing: 'cubic-bezier(0.4, 0, 1, 1)',
+    }
+  );
+  await animation.finished;
 }
 
 function renderQuestion() {
@@ -94,10 +123,9 @@ function startGame() {
   renderQuestion();
 }
 
-function answer(choice) {
+async function answer(choice) {
   if (answered || $('#play').hidden) return;
   answered = true;
-  resetCard();
   const question = questions[current];
   const correct = choice === question.answer;
   if (correct) score += 1;
@@ -114,6 +142,7 @@ function answer(choice) {
     current === questions.length - 1
       ? 'Lihat hasil <span aria-hidden="true">↗</span>'
       : 'Lanjut <span aria-hidden="true">→</span>';
+  await swipeCard(choice);
   dialog.showModal();
   $('#next').focus();
 }
@@ -184,5 +213,9 @@ card.addEventListener('pointerup', (event) => {
     resetCard();
   }
 });
-card.addEventListener('pointercancel', resetCard);
-card.addEventListener('lostpointercapture', resetCard);
+function cancelDrag() {
+  if (drag) resetCard();
+}
+
+card.addEventListener('pointercancel', cancelDrag);
+card.addEventListener('lostpointercapture', cancelDrag);
