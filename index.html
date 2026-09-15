@@ -18,49 +18,50 @@
         class="screen welcome"
         aria-labelledby="welcome-title"
       >
-        <h1 id="welcome-title">Fakta atau Opini?</h1>
-        <p class="intro">
-          Kelihatannya mirip, tapi beda.<br />Bisa bedakan keduanya?
-        </p>
-        <div class="welcome-bottom">
-          <p class="quiz-meta">10 soal &middot; 5 fakta &middot; 5 opini</p>
-          <button id="start" class="primary">
-            Yuk, main! <span aria-hidden="true">↗</span>
-          </button>
-          <p class="footnote">Geser kartu. Tentukan pilihanmu.</p>
-        </div>
+        <h1 id="welcome-title">
+          <img
+            class="welcome-logo"
+            src="img/logo-opening.png"
+            alt="Fakta atau Opini? Yuk asah pengetahuanmu! Biar ga cuma paham, tapi memaknai lebih dalam. Temukan mana fakta dan mana opini!"
+            width="2067"
+            height="2010"
+          />
+        </h1>
+        <img
+          class="welcome-character"
+          src="img/char-opening.png"
+          alt=""
+          width="1239"
+          height="1298"
+        />
+        <button id="start" class="welcome-start" type="button" aria-label="Mulai quiz">
+          <img src="img/start-button.png" alt="" width="1467" height="429" />
+        </button>
+      </section>
+
+      <section
+        id="instruction"
+        class="screen instruction"
+        hidden
+        tabindex="-1"
+        aria-label="Cara bermain. Kuis akan dimulai dalam 3 detik."
+      >
+        <img
+          src="img/instruction.png"
+          alt="Swipe kiri untuk opini. Swipe kanan untuk fakta."
+        />
       </section>
 
       <section
         id="play"
         class="screen play"
         hidden
-        aria-labelledby="question-heading"
+        aria-label="Pertanyaan kuis"
       >
-        <div class="play-top">
-          <span class="eyebrow">PILAH PERNYATAANNYA</span
-          ><span class="score-pill">Skor: <span id="score">0</span></span>
-        </div>
-        <div class="progress-label">
-          <h2 id="question-heading">
-            Soal <span id="question-number">01</span
-            ><span class="muted"> / 10</span>
-          </h2>
-          <span id="progress-percent">0%</span>
-        </div>
-        <div
-          class="progress-track"
-          role="progressbar"
-          aria-label="Soal selesai"
-          aria-valuemin="0"
-          aria-valuemax="10"
-          aria-valuenow="0"
-        >
-          <div id="progress-fill"></div>
-        </div>
-        <p class="question-prompt">Menurutmu, ini fakta atau opini?</p>
+        <img class="play-character play-character-1" src="img/char-1.png" alt="" draggable="false" />
+        <img class="play-character play-character-2" src="img/char-2.png" alt="" draggable="false" />
+        <img class="play-book" src="img/book.png" alt="" draggable="false" />
         <div class="card-stage">
-          <div class="card-under card-under-back" aria-hidden="true"></div>
           <div class="card-under card-under-middle" aria-hidden="true"></div>
           <article
             id="next-question-card"
@@ -69,10 +70,6 @@
             inert
             hidden
           >
-            <div class="card-top">
-              <span>PERNYATAAN <span id="next-card-number"></span></span>
-              <span>↗</span>
-            </div>
             <p id="next-question-text"></p>
             <div class="card-bottom">
               <span>BACA. PIKIR. PILIH.</span>
@@ -82,52 +79,46 @@
             id="question-card"
             class="question-card"
             tabindex="0"
-            aria-label="Kartu pertanyaan. Gunakan panah kiri untuk opini atau panah kanan untuk fakta."
+            aria-label="Kartu pertanyaan. Gunakan panah kiri untuk fakta atau panah kanan untuk opini."
           >
-            <div class="card-top">
-              <span>PERNYATAAN <span id="card-number">01</span></span>
-              <span aria-hidden="true">↗</span>
-            </div>
-            <div id="swipe-label" class="swipe-label" aria-hidden="true"></div>
             <p id="question-text" aria-live="polite"></p>
             <div class="card-bottom">
               <span>BACA. PIKIR. PILIH.</span>
             </div>
           </article>
         </div>
-        <div class="swipe-hint" aria-hidden="true">
-          <span>← Opini</span><span>geser kartu</span><span>Fakta →</span>
-        </div>
         <div class="answer-buttons">
-          <button id="opinion" class="answer opinion">
-            <span aria-hidden="true">←</span> Opini</button
-          ><button id="fact" class="answer fact">
-            Fakta <span aria-hidden="true">→</span>
+          <button id="fact" class="answer fact" type="button" aria-label="Jawab fakta">
+            <img src="img/swipe-fakta.png" alt="Swipe kiri untuk fakta" draggable="false" />
+          </button>
+          <button id="opinion" class="answer opinion" type="button" aria-label="Jawab opini">
+            <img src="img/swipe-opini.png" alt="Swipe kanan untuk opini" draggable="false" />
           </button>
         </div>
-        <p class="footnote">Bisa juga ketuk tombol untuk menjawab.</p>
       </section>
 
       <section
         id="result"
         class="screen result"
         hidden
-        aria-labelledby="result-title"
+        aria-label="Hasil kuis"
       >
-        <div class="eyebrow">10 SOAL. SELESAI!</div>
-        <h1 id="result-title">
-          Makin jeli,<br /><span class="purple">makin tahu.</span>
-        </h1>
-        <p class="intro" id="result-message"></p>
-        <div class="result-score">
-          <span>SKOR AKHIRMU</span
-          ><strong><span id="final-score">0</span><small> / 10</small></strong>
-          <p>jawaban benar</p>
+        <div class="result-logo">
+          <img src="img/logo-closing.png" alt="Quiz selesai!" />
         </div>
-        <button id="restart" class="primary">
-          Main lagi <span aria-hidden="true">↻</span>
+        <img class="result-character" src="img/char-closing-terkecoh.png" alt="Si gampang terkecoh" />
+        <p id="result-message">Kadang fakta dan opini memang bikin bingung. Yuk, baca lebih jeli dan coba lagi!</p>
+        <div class="result-score">
+          <span class="result-score-label">Total Skor</span>
+          <strong id="final-score">0</strong>
+        </div>
+        <dl class="result-breakdown">
+          <div><dt>Benar</dt><dd id="correct-count">0</dd></div>
+          <div><dt>Salah</dt><dd id="incorrect-count">0</dd></div>
+        </dl>
+        <button id="restart" class="result-restart" type="button" aria-label="Main lagi">
+          <img src="img/play-again-button.png" alt="" />
         </button>
-        <p class="footnote">Fakta bisa dibuktikan. Opini adalah pendapat.</p>
       </section>
 
       <dialog
@@ -135,12 +126,17 @@
         aria-labelledby="feedback-title"
         aria-describedby="feedback-description"
       >
+        <div class="feedback-visual">
+          <img id="feedback-image" class="feedback-image" alt="" hidden />
+          <p id="feedback-description" hidden></p>
+        </div>
+        <div id="feedback-text">
         <div id="feedback-icon" class="feedback-icon" aria-hidden="true"></div>
         <p class="eyebrow">JAWABANMU</p>
         <h2 id="feedback-title"></h2>
-        <p id="feedback-description" hidden></p>
-        <button id="next" class="primary">
-          Lanjut <span aria-hidden="true">→</span>
+        </div>
+        <button id="next" class="next-image-button" type="button" aria-label="Soal berikutnya">
+          <img src="img/button-next-question.png" alt="" />
         </button>
       </dialog>
     </main>

@@ -45,18 +45,10 @@ const questions = [
 const $ = (selector) => document.querySelector(selector);
 const card = $('#question-card');
 const dialog = $('#feedback');
-const cardColors = [
-  { background: '#fff3c4', border: '#e7d79c' },
-  { background: '#ffffff', border: '#ddd7cf' },
-  { background: '#eae1f9', border: '#d9caef' },
-  { background: '#e3edb7', border: '#cedc97' },
-  { background: '#f3dfd2', border: '#e5c8b6' },
-];
 const cardPoses = [
   'translateY(0px) scaleX(1) rotate(0deg)',
-  'translateY(7px) scaleX(0.97) rotate(2deg)',
-  'translateY(14px) scaleX(0.94) rotate(-3deg)',
-  'translateY(21px) scaleX(0.91) rotate(4deg)',
+  'translateY(7px) scaleX(0.97) rotate(8deg)',
+  'translateY(14px) scaleX(0.94) rotate(-11deg)',
 ];
 let current = 0;
 let score = 0;
@@ -74,7 +66,6 @@ function resetCard() {
   card.classList.remove('dragging');
   card.style.transform = '';
   card.style.opacity = '';
-  $('#swipe-label').style.opacity = '0';
 }
 
 async function swipeCard(choice) {
@@ -86,7 +77,7 @@ async function swipeCard(choice) {
     card.releasePointerCapture(pointerId);
   }
 
-  const direction = choice === 'opinion' ? -1 : 1;
+  const direction = choice === 'fact' ? -1 : 1;
   const distance = $('.game').clientWidth + card.clientHeight;
   const endTransform = `translateX(${direction * distance}px) rotate(${direction * 25}deg)`;
   card.style.transform = endTransform;
@@ -108,32 +99,31 @@ async function swipeCard(choice) {
 function renderQuestion() {
   answered = false;
   resetCard();
-  [card, $('#next-question-card'), $('.card-under-middle'), $('.card-under-back')]
+  [card, $('#next-question-card'), $('.card-under-middle')]
     .forEach((layer, offset) => {
-      const color = cardColors[(current + offset) % cardColors.length];
-      layer.style.setProperty('--card-background', color.background);
-      layer.style.setProperty('--card-border', color.border);
-      layer.style.setProperty('--card-pose', cardPoses[(current + offset) % cardPoses.length]);
+      layer.style.setProperty('--card-pose', cardPoses[offset]);
     });
-  const number = String(current + 1).padStart(2, '0');
-  $('#question-number').textContent = number;
-  $('#card-number').textContent = number;
   $('#question-text').textContent = questions[current].text;
   const nextQuestion = questions[current + 1];
   $('#next-question-card').hidden = !nextQuestion;
-  $('#next-card-number').textContent = nextQuestion
-    ? String(current + 2).padStart(2, '0')
-    : '';
   $('#next-question-text').textContent = nextQuestion ? nextQuestion.text : '';
   $('.card-under-middle').hidden = current + 2 >= questions.length;
-  $('.card-under-back').hidden = current + 3 >= questions.length;
-  $('#score').textContent = score;
-  $('#progress-percent').textContent = `${current * 10}%`;
-  $('#progress-fill').style.width = `${current * 10}%`;
-  $('.progress-track').setAttribute('aria-valuenow', current);
   $('#opinion').disabled = false;
   $('#fact').disabled = false;
   card.focus({ preventScroll: true });
+}
+
+async function showInstructions() {
+  const startButton = $('#start');
+  if (startButton.disabled) return;
+  startButton.disabled = true;
+  await $('#instruction img').decode().catch(() => {});
+  showScreen('instruction');
+  $('#instruction').focus({ preventScroll: true });
+  window.setTimeout(() => {
+    startGame();
+    startButton.disabled = false;
+  }, 3000);
 }
 
 function startGame() {
@@ -149,20 +139,34 @@ async function answer(choice) {
   const question = questions[current];
   const correct = choice === question.answer;
   if (correct) score += 1;
-  $('#score').textContent = score;
   $('#opinion').disabled = true;
   $('#fact').disabled = true;
-  $('#feedback-title').textContent = correct ? 'Benar!' : 'Salah!';
+  $('#feedback-title').textContent = correct
+    ? `Benar! Itu adalah ${question.answer === 'fact' ? 'fakta' : 'opini'}.`
+    : `Salah! Jawaban yang benar adalah ${question.answer === 'fact' ? 'fakta' : 'opini'}.`;
+  dialog.classList.add('feedback-artwork');
+  dialog.classList.toggle('feedback-correct', correct);
+  $('#feedback-text').hidden = true;
+  const feedbackImage = $('#feedback-image');
+  feedbackImage.hidden = false;
+  const answerType = question.answer === 'fact' ? 'fakta' : 'opini';
+  feedbackImage.src = correct
+    ? `img/popup-benar-${answerType}.png`
+    : `img/popup-salah-jawaban-${answerType}.png`;
   $('#feedback-icon').textContent = correct ? '✓' : '×';
   $('#feedback-icon').classList.toggle('incorrect', !correct);
   const explanation = $('#feedback-description');
   explanation.hidden = correct || question.answer === 'opinion';
-  explanation.textContent = explanation.hidden ? '' : question.explanation;
-  $('#next').innerHTML =
-    current === questions.length - 1
-      ? 'Lihat hasil <span aria-hidden="true">↗</span>'
-      : 'Lanjut <span aria-hidden="true">→</span>';
-  await swipeCard(choice);
+  explanation.textContent = explanation.hidden ? '' : `Kenapa?\n\n${question.explanation}`;
+  $('#next').setAttribute('aria-label',
+    current === questions.length - 1 ? 'Lihat hasil' : correct ? 'Soal berikutnya' : 'Lanjut');
+  const nextImage = $('#next img');
+  nextImage.src = correct ? 'img/button-next-question.png' : 'img/button-lanjut.png';
+  await Promise.all([
+    swipeCard(choice),
+    feedbackImage.decode().catch(() => {}),
+    nextImage.decode().catch(() => {}),
+  ]);
   dialog.showModal();
   $('#next').focus();
 }
@@ -174,18 +178,14 @@ function nextQuestion() {
     renderQuestion();
     return;
   }
-  $('#final-score').textContent = score;
-  $('#result-message').textContent =
-    score === 10
-      ? 'Sempurna! Kamu jeli membedakan fakta dan pendapat.'
-      : score >= 6
-      ? 'Bagus! Terus latih kejelianmu saat membaca informasi.'
-      : 'Terus berlatih, ya! Ingat, fakta bisa dibuktikan, opini adalah pendapat.';
+  $('#final-score').textContent = score * 10;
+  $('#correct-count').textContent = score;
+  $('#incorrect-count').textContent = questions.length - score;
   showScreen('result');
   $('#restart').focus();
 }
 
-$('#start').addEventListener('click', startGame);
+$('#start').addEventListener('click', showInstructions);
 $('#restart').addEventListener('click', startGame);
 $('#opinion').addEventListener('click', () => answer('opinion'));
 $('#fact').addEventListener('click', () => answer('fact'));
@@ -195,7 +195,7 @@ dialog.addEventListener('cancel', (event) => event.preventDefault());
 card.addEventListener('keydown', (event) => {
   if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
     event.preventDefault();
-    answer(event.key === 'ArrowLeft' ? 'opinion' : 'fact');
+    answer(event.key === 'ArrowLeft' ? 'fact' : 'opinion');
   }
 });
 
@@ -213,10 +213,6 @@ card.addEventListener('pointermove', (event) => {
     -18,
     Math.min(18, distance / 12)
   )}deg) ${card.style.getPropertyValue('--card-pose')}`;
-  const label = $('#swipe-label');
-  label.textContent = distance < 0 ? 'OPINI' : 'FAKTA';
-  label.style.color = distance < 0 ? '#7251d5' : '#53682b';
-  label.style.opacity = String(Math.min(1, Math.abs(distance) / 65));
 });
 
 card.addEventListener('pointerup', (event) => {
@@ -228,7 +224,7 @@ card.addEventListener('pointerup', (event) => {
     Math.abs(distance) >= threshold &&
     Math.abs(distance) > Math.abs(vertical)
   ) {
-    answer(distance < 0 ? 'opinion' : 'fact');
+    answer(distance < 0 ? 'fact' : 'opinion');
   } else {
     resetCard();
   }
