@@ -199,14 +199,7 @@ function nextQuestion() {
     return;
   }
   const finalScore = score * 10;
-  const character = finalScore === 100
-    ? 'jenius'
-    : finalScore >= 80
-      ? 'paling-jeli'
-      : finalScore >= 60
-        ? 'jeli'
-        : 'terkecoh';
-  setResultCharacter(character);
+  setResultCharacter('terkecoh');
   $('#final-score').textContent = finalScore;
   $('#correct-count').textContent = score;
   $('#incorrect-count').textContent = questions.length - score;
