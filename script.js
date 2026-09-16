@@ -176,6 +176,7 @@ const tapSound = new Audio('audio/tap.mp3');
 const swipeSound = new Audio('audio/swipe.mp3');
 const resultSound = new Audio('audio/result.mp3');
 music.loop = true;
+resultSound.loop = true;
 music.volume = 0.35;
 music.preload = 'metadata';
 tapSound.preload = 'auto';
