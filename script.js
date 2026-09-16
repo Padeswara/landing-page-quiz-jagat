@@ -127,6 +127,7 @@ async function showInstructions() {
 }
 
 function startGame() {
+  $('#share-status').textContent = '';
   current = 0;
   score = 0;
   showScreen('play');
@@ -171,6 +172,25 @@ async function answer(choice) {
   $('#next').focus();
 }
 
+const resultCharacters = {
+  terkecoh: {
+    alt: 'Si gampang terkecoh',
+    message: 'Kadang fakta dan opini memang bikin bingung. Yuk, baca lebih jeli dan coba lagi!',
+  },
+  jeli: {
+    alt: 'Si jeli',
+    message: 'Insting literasimu sudah mulai terbentuk. Tinggal lebih teliti sedikit!',
+  },
+  'paling-jeli': {
+    alt: 'Si paling jeli',
+    message: 'Wah, kamu cukup peka menangkap mana fakta dan mana opini!',
+  },
+  jenius: {
+    alt: 'Si jenius',
+    message: 'Nggak gampang terkecoh. Kamu berhasil bedain fakta dan opini dengan sempurna!',
+  },
+};
+
 function nextQuestion() {
   dialog.close();
   current += 1;
@@ -178,15 +198,79 @@ function nextQuestion() {
     renderQuestion();
     return;
   }
-  $('#final-score').textContent = score * 10;
+  const finalScore = score * 10;
+  const character = finalScore === 100
+    ? 'jenius'
+    : finalScore >= 80
+      ? 'paling-jeli'
+      : finalScore >= 60
+        ? 'jeli'
+        : 'terkecoh';
+  setResultCharacter(character);
+  $('#final-score').textContent = finalScore;
   $('#correct-count').textContent = score;
   $('#incorrect-count').textContent = questions.length - score;
   showScreen('result');
   $('#restart').focus();
 }
 
+function setResultCharacter(character) {
+  const result = resultCharacters[character];
+  const image = $('.result-character');
+  image.src = `img/char-closing-${character}.png`;
+  image.alt = result.alt;
+  image.dataset.character = character;
+  $('#result-message').textContent = result.message;
+}
+
+async function copyShareText(text, platform) {
+  try {
+    await navigator.clipboard.writeText(text);
+    $('#share-status').textContent = `Hasil disalin! Tempelkan di ${platform} untuk membagikannya.`;
+  } catch {
+    window.prompt(`Salin hasil ini, lalu tempelkan di ${platform}:`, text);
+  }
+}
+
+async function shareResult(platform) {
+  const url = new URL(window.location.href);
+  url.hash = '';
+  const text = `Aku mendapat skor ${score * 10}/100 di kuis Fakta atau Opini! Yuk, coba dan lihat skormu!`;
+  const fullText = `${text}\n${url.href}`;
+  $('#share-status').textContent = '';
+
+  if (platform === 'instagram') {
+    if (navigator.share) {
+      try {
+        await navigator.share({ title: 'Hasil Kuis Fakta atau Opini', text, url: url.href });
+        return;
+      } catch (error) {
+        if (error.name === 'AbortError') return;
+      }
+    }
+    await copyShareText(fullText, 'Instagram');
+    return;
+  }
+
+  const targets = {
+    whatsapp: `https://wa.me/?text=${encodeURIComponent(fullText)}`,
+    x: `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url.href)}`,
+    facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url.href)}`,
+  };
+  if (!targets[platform]) return;
+  window.open(targets[platform], '_blank', 'noopener,noreferrer');
+  if (platform === 'facebook') await copyShareText(fullText, 'Facebook');
+}
+
+document.querySelectorAll('[data-share]').forEach((button) => {
+  button.addEventListener('click', () => shareResult(button.dataset.share));
+});
+
 $('#start').addEventListener('click', showInstructions);
-$('#restart').addEventListener('click', startGame);
+$('#restart').addEventListener('click', () => {
+  showScreen('welcome');
+  $('#start').focus();
+});
 $('#opinion').addEventListener('click', () => answer('opinion'));
 $('#fact').addEventListener('click', () => answer('fact'));
 $('#next').addEventListener('click', nextQuestion);

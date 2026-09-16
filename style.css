@@ -62,17 +62,17 @@ button:hover {
   position: relative;
   overflow-x: hidden;
   overflow-y: auto;
-  background: rgb(255 255 255 / 65%);
-  -webkit-backdrop-filter: blur(24px) saturate(140%);
-  backdrop-filter: blur(24px) saturate(140%);
+  /* background: rgb(255 255 255 / 65%); */
+  /* -webkit-backdrop-filter: blur(24px) saturate(140%); */
+  /* backdrop-filter: blur(24px) saturate(140%); */
   /* padding: 24px; */
   display: flex;
   flex-direction: column;
-  border: 1px solid #ffffff80;
+  /* border: 1px solid #ffffff80; */
   border-radius: 24px;
-  box-shadow: 0 12px 40px rgb(36 35 41 / 8%),
+  /* box-shadow: 0 12px 40px rgb(36 35 41 / 8%),
     0 2px 8px rgb(36 35 41 / 4%),
-    inset 0 1px 0 rgb(255 255 255 / 80%);
+    inset 0 1px 0 rgb(255 255 255 / 80%); */
 }
 .screen {
   flex: 1;
@@ -516,10 +516,8 @@ dialog p:not(.eyebrow) {
   background: #0654c5 url('img/bg-skor.jpg') center / cover no-repeat;
 }
 .result {
-  display: grid;
-  grid-template-rows: auto minmax(100px, 1fr) auto auto auto;
-  justify-items: center;
-  gap: 6px;
+  display: flex;
+  align-items: center;
   min-height: 560px;
   /* padding: max(20px, env(safe-area-inset-top)) 20px
     max(16px, env(safe-area-inset-bottom)); */
@@ -543,14 +541,59 @@ dialog p:not(.eyebrow) {
   width: 100%;
   height: auto;
 }
-.result-character {
-    width: 270px;
-    position: absolute;
-    top: 70px;
+.result-character-wrapper {
+    width: 100%;
+    height: 130px;
+    position: relative;
+    top: 90px;
     left: 0;
     right: 0;
     margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.result-character {
+  display: block;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+/* Customize width and height independently for each character. */
+.result-character[data-character="terkecoh"] {
+  width: 266px;
+  height: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  top: -30px;
+}
+.result-character[data-character="jeli"] {
+    width: 250px;
     height: auto;
+    position: absolute;
+    top: -9px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+.result-character[data-character="paling-jeli"] {
+    width: 230px;
+    height: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -50px;
+    margin: 0 auto;
+}
+.result-character[data-character="jenius"] {
+    width: 340px;
+    height: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -30px;
+    margin: 0 auto;
 }
 #result-message {
     color: white;
@@ -558,7 +601,7 @@ dialog p:not(.eyebrow) {
     font-weight: 500;
     line-height: 1.5;
     text-shadow: 0 2px 3px rgb(0 0 0 / 65%);
-    padding: 0 15px;
+    padding: 0 35px;
     position: absolute;
     top: 260px;
     left: 0;
@@ -602,6 +645,9 @@ dialog p:not(.eyebrow) {
   color: #242329;
   font-size: 12px;
 }
+.result-breakdown dt {
+  color: #000;
+}
 .result-breakdown dd {
   margin: 0;
   font-size: 28px;
@@ -613,15 +659,55 @@ dialog p:not(.eyebrow) {
 .result-breakdown > div:last-child {
   color: #dc2626;
 }
+.result-actions {
+    width: 100%;
+    padding: 0;
+    position: absolute;
+    top: 470px;
+}
+.result-logo {
+  position: absolute;
+  top: 0;
+}
+.result-share > p {
+    margin: 10px auto 0;
+    max-width: 240px;
+    color: white;
+    font-size: 11px;
+    line-height: 1.5;
+}
+.share-icons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+.share-icons button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 5px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+}
+.share-icons img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+#share-status:empty {
+  display: none;
+}
 .result-restart {
+    display: block;
+    margin: 8px auto 0;
     width: 200px;
     max-width: 100%;
     border: 0;
     border-radius: 12px;
     padding: 0;
     background: transparent;
-    position: absolute;
-    top: 520px;
 }
 @media (max-width: 600px) {
   .game {

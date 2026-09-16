@@ -106,7 +106,9 @@
         <div class="result-logo">
           <img src="img/logo-closing.png" alt="Quiz selesai!" />
         </div>
-        <img class="result-character" src="img/char-closing-terkecoh.png" alt="Si gampang terkecoh" />
+        <div class="result-character-wrapper">
+          <img class="result-character" data-character="terkecoh" src="img/char-closing-terkecoh.png" alt="Si gampang terkecoh" />
+        </div>
         <p id="result-message">Kadang fakta dan opini memang bikin bingung. Yuk, baca lebih jeli dan coba lagi!</p>
         <div class="result-score">
           <span class="result-score-label">Total Skor</span>
@@ -116,9 +118,21 @@
           <div><dt>Benar</dt><dd id="correct-count">0</dd></div>
           <div><dt>Salah</dt><dd id="incorrect-count">0</dd></div>
         </dl>
+        <div class="result-actions">
+          <section class="result-share" aria-label="Bagikan hasil kuis">
+            <p>Bagikan hasilnya dan ajak teman-temanmu untuk mengikuti quiz ini!</p>
+            <div class="share-icons">
+              <button type="button" data-share="whatsapp" aria-label="Bagikan ke WhatsApp"><img src="img/whatsapp.svg" alt="" /></button>
+              <button type="button" data-share="x" aria-label="Bagikan ke X"><img src="img/x.svg" alt="" /></button>
+              <button type="button" data-share="facebook" aria-label="Bagikan ke Facebook"><img src="img/facebook.svg" alt="" /></button>
+              <button type="button" data-share="instagram" aria-label="Bagikan ke Instagram"><img src="img/instagram.svg" alt="" /></button>
+            </div>
+            <p id="share-status" role="status" aria-live="polite"></p>
+          </section>
         <button id="restart" class="result-restart" type="button" aria-label="Main lagi">
           <img src="img/play-again-button.png" alt="" />
         </button>
+        </div>
       </section>
 
       <dialog
