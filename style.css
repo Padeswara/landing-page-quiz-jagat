@@ -74,6 +74,75 @@ button:hover {
     0 2px 8px rgb(36 35 41 / 4%),
     inset 0 1px 0 rgb(255 255 255 / 80%); */
 }
+.game-toolbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  padding: max(8px, env(safe-area-inset-top))
+    max(8px, env(safe-area-inset-right)) 0
+    max(8px, env(safe-area-inset-left));
+  pointer-events: none;
+}
+.game-toolbar-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 4px;
+}
+.game-sound {
+  margin-right: auto;
+}
+.game-share,
+.game-sound {
+  pointer-events: auto;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 8px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+}
+.game-share img,
+.game-sound img {
+  width: 100%;
+  height: auto;
+}
+#game-share-status {
+  width: 100%;
+  padding: 10px 14px;
+  margin: 0;
+  border-radius: 8px;
+  background: #fff;
+  color: #242329;
+  font-size: 12px;
+  pointer-events: none;
+}
+#game-share-status:empty {
+  display: none;
+}
+.question-progress {
+  width: 100%;
+  display: flex;
+  gap: 3px;
+}
+.question-progress > span {
+  flex: 1;
+  min-width: 0;
+  height: 4px;
+  border-radius: 2px;
+  background: #e5e7eb;
+}
+.question-progress > .is-answered {
+  background: #fc7235;
+}
 .screen {
   flex: 1;
   min-height: 0;
@@ -134,7 +203,14 @@ button:hover {
 .instruction {
   justify-content: center;
   align-items: center;
-  outline: none;
+  cursor: pointer;
+}
+.instruction-confirm {
+  margin-top: 20px;
+  color: #fff;
+  font-size: 14px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 .instruction img {
   display: block;
@@ -159,7 +235,7 @@ button:hover {
 
 .welcome-logo {
     /* object-position: center bottom; */
-    width: 100%;
+    width: 360px;
     position: absolute;
     top: 30px;
     height: auto;
@@ -234,6 +310,8 @@ button:hover {
 }
 .play {
   gap: 16px;
+  touch-action: pan-y;
+  user-select: none;
 }
 .play > * {
   flex-shrink: 0;
@@ -299,12 +377,21 @@ button:hover {
 .card-stage {
     position: absolute;
     display: flex;
-    width: 250px;
+    width: min(300px, calc(100% - 40px));
     align-self: center;
-    top: 30px;
+    top: 45px;
     left: 0;
     right: 0;
     margin: 0 auto;
+}
+.card-answer-labels {
+  position: absolute;
+  bottom: 44px;
+  left: 22px;
+  width: calc(100% - 44px);
+  max-width: 100%;
+  height: auto;
+  pointer-events: none;
 }
 .card-under {
   position: absolute;
@@ -313,7 +400,7 @@ button:hover {
 }
 .card-under,
 .question-card {
-  background: url('img/paper-card.png') center / auto 100% no-repeat;
+  background: url('img/paper-card.png') center / 100% 100% no-repeat;
   border: 0;
   border-radius: 0;
   transform: var(--card-pose, none);
@@ -321,11 +408,10 @@ button:hover {
 .question-card {
   position: relative;
   z-index: 1;
-  width: 235px;
+  width: 280px;
   max-width: 100%;
-  height: auto;
-  aspect-ratio: 1315 / 1807;
-  padding: 18px 22px 32%;
+  height: 310px;
+  padding: 18px 28px 80px;
   display: flex;
   flex-direction: column;
   touch-action: pan-y;
@@ -352,7 +438,7 @@ button:hover {
 }
 .question-card > p {
   font-family: inherit;
-  font-size: 23px;
+  font-size: 17px;
   line-height: 1.35;
   font-weight: 500;
   letter-spacing: -0.7px;
@@ -392,6 +478,8 @@ button:hover {
     margin: 0 auto;
 }
 .answer {
+  touch-action: pan-y;
+  user-select: none;
   width: 100%;
   min-width: 0;
   height: auto;
@@ -435,18 +523,28 @@ dialog.feedback-artwork {
 .feedback-visual {
   position: relative;
 }
-dialog #feedback-description {
+.feedback-fact-top {
   position: absolute;
-  top: 51%;
-  left: 21%;
-  width: 58%;
-  max-height: 40%;
-  overflow-y: auto;
-  margin: 0;
-  color: #242329;
-  font-size: 12px;
-  line-height: 1.5;
-  white-space: pre-line;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+}
+dialog #feedback-description {
+    position: absolute;
+    top: 335px;
+    width: 230px;
+    max-height: 260px;
+    overflow-y: auto;
+    color: #242329;
+    font-size: 12px;
+    line-height: 1.5;
+    white-space: pre-line;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    height: 240px;
 }
 .feedback-image {
   display: block;
@@ -454,6 +552,48 @@ dialog #feedback-description {
   height: auto;
   max-height: calc(100dvh - 130px);
   object-fit: contain;
+}
+dialog.feedback-incorrect-fact {
+  position: fixed;
+  width: 100%;
+  margin: 0;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  border-radius: 0;
+  overflow: hidden;
+}
+.feedback-incorrect-fact .feedback-visual {
+  width: 100%;
+  height: 100%;
+}
+.feedback-incorrect-fact .feedback-fact-top {
+  position: absolute;
+  top: 70px;
+  left: 0;
+  width: 200px;
+  height: auto;
+  pointer-events: none;
+  margin: 0 auto;
+  right: 0;
+}
+.feedback-incorrect-fact .feedback-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 380px;
+  height: 500px;
+  max-height: none;
+  object-fit: fill;
+}
+dialog.feedback-incorrect-fact #feedback-description {
+  max-height: min(260px, calc(100% - 325px));
+}
+.feedback-incorrect-fact .next-image-button {
+  position: absolute;
+  bottom: max(24px, env(safe-area-inset-bottom));
+  left: 0;
 }
 .next-image-button {
 display: block;
@@ -524,6 +664,20 @@ dialog p:not(.eyebrow) {
   text-align: center;
 }
 
+.result-book {
+    position: absolute;
+    top: 345px;
+    left: 0;
+    width: 250px;
+    height: auto;
+    z-index: 0;
+    pointer-events: none;
+    right: 0;
+    margin: 0 auto;
+}
+.result > :not(.result-book) {
+  z-index: 1;
+}
 .result-logo {
   width: 100%;
   margin: 0;
@@ -709,11 +863,14 @@ dialog p:not(.eyebrow) {
     padding: 0;
     background: transparent;
 }
-@media (max-width: 600px) {
+@media (max-width: 424px) {
   .game {
-    width: min(100vw, 56.25vh);
-    width: min(100vw, 56.25dvh);
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    aspect-ratio: auto;
     border: 0;
+    border-radius: 0;
     /* padding-top: max(24px, env(safe-area-inset-top));
     padding-right: max(24px, env(safe-area-inset-right));
     padding-bottom: max(24px, env(safe-area-inset-bottom));

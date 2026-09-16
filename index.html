@@ -13,6 +13,18 @@
   </head>
   <body>
     <main class="game" aria-label="Kuis fakta dan opini">
+      <div class="game-toolbar">
+        <div id="question-progress" class="question-progress" role="progressbar" aria-label="Soal terjawab" aria-valuemin="0" aria-valuenow="0" hidden></div>
+        <div class="game-toolbar-buttons">
+          <button id="sound-toggle" class="game-sound" type="button" aria-label="Matikan suara" aria-pressed="false" hidden>
+            <img src="img/unmute.svg" alt="" draggable="false" />
+          </button>
+          <button class="game-share" type="button" data-share="native" aria-label="Bagikan kuis">
+            <img src="img/share.svg" alt="" draggable="false" />
+          </button>
+        </div>
+        <p id="game-share-status" role="status" aria-live="polite"></p>
+      </div>
       <section
         id="welcome"
         class="screen welcome"
@@ -43,13 +55,15 @@
         id="instruction"
         class="screen instruction"
         hidden
-        tabindex="-1"
-        aria-label="Cara bermain. Kuis akan dimulai dalam 3 detik."
+        tabindex="0"
+        role="button"
+        aria-label="Cara bermain. Kuis dimulai otomatis dalam 3 detik. Klik di mana saja untuk langsung mulai bermain."
       >
         <img
           src="img/instruction.png"
           alt="Swipe kiri untuk opini. Swipe kanan untuk fakta."
         />
+        <span class="instruction-confirm">Mengerti</span>
       </section>
 
       <section
@@ -71,6 +85,7 @@
             hidden
           >
             <p id="next-question-text"></p>
+            <img class="card-answer-labels" src="img/fakta-opini.png" alt="" draggable="false" />
             <div class="card-bottom">
               <span>BACA. PIKIR. PILIH.</span>
             </div>
@@ -82,6 +97,7 @@
             aria-label="Kartu pertanyaan. Gunakan panah kiri untuk fakta atau panah kanan untuk opini."
           >
             <p id="question-text" aria-live="polite"></p>
+            <img class="card-answer-labels" src="img/fakta-opini.png" alt="Fakta atau Opini" draggable="false" />
             <div class="card-bottom">
               <span>BACA. PIKIR. PILIH.</span>
             </div>
@@ -103,6 +119,7 @@
         hidden
         aria-label="Hasil kuis"
       >
+        <img class="result-book" src="img/book-skor.png" alt="" draggable="false" />
         <div class="result-logo">
           <img src="img/logo-closing.png" alt="Quiz selesai!" />
         </div>
@@ -142,6 +159,7 @@
       >
         <div class="feedback-visual">
           <img id="feedback-image" class="feedback-image" alt="" hidden />
+          <img id="feedback-fact-top" class="feedback-fact-top" src="img/salah-fakta-top.png" alt="" draggable="false" hidden />
           <p id="feedback-description" hidden></p>
         </div>
         <div id="feedback-text">
