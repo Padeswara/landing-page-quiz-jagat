@@ -2,132 +2,158 @@ const questionBank = [
   {
     "text": "Kapasitas PLTS Indonesia sudah mencapai 1,5 GW pada pertengahan 2026.",
     "answer": "fact",
-    "explanation": "Kapasitas terpasang PLTS Indonesia mencapai 1,5 GW pada pertengahan 2026, naik dari 0,9 GW pada 2024."
+    "explanation": "Kapasitas terpasang PLTS Indonesia mencapai 1,5 GW pada pertengahan 2026, naik dari 0,9 GW pada 2024.",
+    "sourceUrl": "https://lestari.kompas.com/read/2026/09/04/160205286/kapasitas-plts-indonesia-baru-15-gw-aesi-soroti-hambatan-capai-target-100?source=terpopuler_artikel&utm_source=chatgpt.com"
   },
   {
     "text": "Indonesia adalah negara dengan kuliner terbaik di dunia pada 2026.",
     "answer": "opinion",
-    "explanation": "Menurut laporan 50 Food Destinations Around the World 2026 yang dirilis Travel and Tour World (TTW), Indonesia berada di peringkat ke-10."
+    "explanation": "Menurut laporan 50 Food Destinations Around the World 2026 yang dirilis Travel and Tour World (TTW), Indonesia berada di peringkat ke-10.",
+    "sourceUrl": "https://amp.kompas.com/tren/read/2026/07/26/100000465/10-negara-destinasi-wisata-kuliner-terbaik-di-dunia-2026-ada-indonesia?utm_source=chatgpt.com"
   },
   {
     "text": "Lebih dari 1.100 pelajar Australia belajar budaya Indonesia, mulai dari batik, angklung, dan kuliner.",
     "answer": "fact",
-    "explanation": "Lebih dari 1.100 pelajar Australia belajar budaya Indonesia lewat program IGtS yang diselenggarakan KJRI Sydney di 2 sekolah di New South Wales, Australia."
+    "explanation": "Lebih dari 1.100 pelajar Australia belajar budaya Indonesia lewat program IGtS yang diselenggarakan KJRI Sydney di 2 sekolah di New South Wales, Australia.",
+    "sourceUrl": "https://amp.kompas.com/tren/read/2026/08/12/192900765/saat-seribuan-pelajar-australia-belajar-budaya-indonesia-lewat-batik?utm_source=chatgpt.com"
   },
   {
     "text": "Indonesia diperkirakan mengalami musim kemarau hingga September 2026.",
     "answer": "fact",
-    "explanation": "BMKG memprediksi musim kemarau 2026 masih berlangsung di sejumlah wilayah Indonesia hingga September 2026. Puncaknya diprediksi terjadi pada Agustus dan September."
+    "explanation": "BMKG memprediksi musim kemarau 2026 masih berlangsung di sejumlah wilayah Indonesia hingga September 2026. Puncaknya diprediksi terjadi pada Agustus dan September.",
+    "sourceUrl": "https://amp.kompas.com/tren/read/2026/08/20/140000965/musim-kemarau-di-indonesia-sampai-bulan-apa-ini-kata-bmkg?utm_source=chatgpt.com"
   },
   {
     "text": "Musim kemarau di Indonesia mencapai puncaknya secara bersamaan di seluruh wilayah pada Agustus.",
     "answer": "opinion",
-    "explanation": "BMKG menyebut, puncak musim kemarau tidak secara serentak terjadi di seluruh wilayah. Ini mengingat Indonesia memiliki 699 Zona Musim (ZOM), yang masing-masing memiliki pola musim berbeda."
+    "explanation": "BMKG menyebut, puncak musim kemarau tidak secara serentak terjadi di seluruh wilayah. Ini mengingat Indonesia memiliki 699 Zona Musim (ZOM), yang masing-masing memiliki pola musim berbeda.",
+    "sourceUrl": "https://amp.kompas.com/tren/read/2026/08/08/060000965/apakah-seluruh-wilayah-indonesia-kompak-alami-puncak-kemarau-pada-agustus?utm_source=chatgpt.com"
   },
   {
     "text": "Penyakit akibat makanan yang tidak aman diperkirakan menyebabkan kerugian Rp 229 triliun per tahun di Indonesia.",
     "answer": "fact",
-    "explanation": "Dalam kuliah umum di IPB, Sabtu (4/7/2026), Kepala BPOM menyebut bahwa kerugian akibat penyakit yang dipicu makanan tidak aman diperkirakan mencapai Rp 229 triliun per tahun."
+    "explanation": "Dalam kuliah umum di IPB, Sabtu (4/7/2026), Kepala BPOM menyebut bahwa kerugian akibat penyakit yang dipicu makanan tidak aman diperkirakan mencapai Rp 229 triliun per tahun.",
+    "sourceUrl": "https://lestari.kompas.com/read/2026/07/04/213357486/kerugian-ekonomi-akibat-makanan-tak-aman-masih-tinggi-bpom-gandeng-ipb?utm_source=chatgpt.com"
   },
   {
     "text": "Indonesia dan Negara Bagian Illinois memperkuat kerja sama di bidang ekonomi, perdagangan, investasi, teknologi, serta riset dan inovasi.",
     "answer": "fact",
-    "explanation": "Kerja sama tersebut diresmikan dengan penandatanganan Pernyataan Kemitraan oleh Dirjen Amerika dan Eropa Kemenlu Grata Endah Werdaningtyas bersama Gubernur Illinois J B Pritzker di Chicago, Illinois, Jumat (7/8/2026)."
+    "explanation": "Kerja sama tersebut diresmikan dengan penandatanganan Pernyataan Kemitraan oleh Dirjen Amerika dan Eropa Kemenlu Grata Endah Werdaningtyas bersama Gubernur Illinois J B Pritzker di Chicago, Illinois, Jumat (7/8/2026).",
+    "sourceUrl": "https://amp.kompas.com/tren/read/2026/08/12/190000965/indonesia-illinois-as-perkuat-kerja-sama-ekonomi-hingga-teknologi-apa-saja?utm_source=chatgpt.com"
   },
   {
     "text": "El Nino akan menjadi ancaman terbesar bagi kehidupan masyarakat Indonesia pada akhir 2026.",
     "answer": "opinion",
-    "explanation": "El Nino disebut dapat berdampak terhadap sektor pertanian, perdagangan, harga pangan, kesehatan, hingga pengeluaran rumah tangga. Namun, menyebutnya sebagai “ancaman terbesar” merupakan penyataan yang tidak memiliki basis fakta."
+    "explanation": "El Nino disebut dapat berdampak terhadap sektor pertanian, perdagangan, harga pangan, kesehatan, hingga pengeluaran rumah tangga. Namun, menyebutnya sebagai “ancaman terbesar” merupakan penyataan yang tidak memiliki basis fakta.",
+    "sourceUrl": "https://amp.kompas.com/tren/read/2026/08/19/153000865/super-el-nino-di-depan-mata-mengapa-masyarakat-indonesia-perlu-waspada-?utm_source=chatgpt.com"
   },
   {
     "text": "Pencarian kata kunci “wastra Nusantara” di Google meningkat pada Agustus 2026.",
     "answer": "fact",
-    "explanation": "Berdasarkan data Google Search, pencarian kata kunci \"wastra Nusantara\" melonjak 540 persen pada Agustus 2026 secara tahunan (yoy)."
+    "explanation": "Berdasarkan data Google Search, pencarian kata kunci \"wastra Nusantara\" melonjak 540 persen pada Agustus 2026 secara tahunan (yoy).",
+    "sourceUrl": "https://tekno.kompas.com/read/2026/08/17/08210017/hari-kemerdekaan-indonesia-wastra-nusantara-ramai-dicari-di-google?page=all"
   },
   {
     "text": "Pemprov DKI Jakarta anggarkan Rp 90 miliar untuk pembangunan Sarana Jaringan Utilitas Terpadu (SJUT) di 10 ruas jalan.",
     "answer": "fact",
-    "explanation": "Kepala Dinas Bina Marga DKI Jakarta Suwondo mengatakan, Pemprov DKI siapkan Rp 90 miliar untuk pembangunan SJUT di 10 ruas jalan dengan panjang total 16,9 km."
+    "explanation": "Kepala Dinas Bina Marga DKI Jakarta Suwondo mengatakan, Pemprov DKI siapkan Rp 90 miliar untuk pembangunan SJUT di 10 ruas jalan dengan panjang total 16,9 km.",
+    "sourceUrl": "https://megapolitan.kompas.com/read/2026/09/10/13535051/pemprov-dki-anggarkan-rp-90-miliar-untuk-tanam-kabel-di-10-ruas-jalan"
   },
   {
     "text": "Bekasi masuk zona merah kekeringan hingga September 2026",
     "answer": "fact",
-    "explanation": "Dalam peringatan dini kekeringan meteorologis yang dirilis BMKG, Kabupaten Bekasi dan Kota Bekasi masuk zona merah atau kategori Awas. Kondisi ini diperkirakan berlangsung hingga 10 September 2026"
+    "explanation": "Dalam peringatan dini kekeringan meteorologis yang dirilis BMKG, Kabupaten Bekasi dan Kota Bekasi masuk zona merah atau kategori Awas. Kondisi ini diperkirakan berlangsung hingga 10 September 2026",
+    "sourceUrl": "https://megapolitan.kompas.com/read/2026/09/10/12271191/bekasi-masuk-zona-merah-kekeringan-bmkg-sebut-bisa-berlangsung-lebih-dari"
   },
   {
     "text": "Empat gunung api di Indonesia mengalami erupsi pada waktu yang hampir bersamaan pada September 2026.",
     "answer": "fact",
-    "explanation": "Gunung Anak Krakatau, Semeru, Ili Lewotolok, dan Gunung Ibu mengalami erupsi pada Minggu (6/9/2026). Ahli Gempa IABI, Daryono, menyebut bahwa fenomena erupsi simultan merupakan manifestasi dari dinamika tektonik global di kawasan Ring of Fire."
+    "explanation": "Gunung Anak Krakatau, Semeru, Ili Lewotolok, dan Gunung Ibu mengalami erupsi pada Minggu (6/9/2026). Ahli Gempa IABI, Daryono, menyebut bahwa fenomena erupsi simultan merupakan manifestasi dari dinamika tektonik global di kawasan Ring of Fire.",
+    "sourceUrl": "https://www.kompas.com/tren/read/2026/09/06/190100465/4-gunung-api-erupsi-bersamaan-apakah-saling-berkaitan-ini-kata-pakar"
   },
   {
     "text": "Perdagangan karbon merupakan cara paling efektif untuk mengatasi perubahan iklim di Indonesia.",
     "answer": "opinion",
-    "explanation": "Perdagangan karbon bukan cara paling efektif untuk mengatasi perubahan iklim di Indonesia. Namun, perdagangan karbon merupakan salah satu instrumen yang digunakan pemerintah untuk mendukung pencapaian target penurunan emisi Indonesia."
+    "explanation": "Perdagangan karbon bukan cara paling efektif untuk mengatasi perubahan iklim di Indonesia. Namun, perdagangan karbon merupakan salah satu instrumen yang digunakan pemerintah untuk mendukung pencapaian target penurunan emisi Indonesia.",
+    "sourceUrl": "https://lestari.kompas.com/read/2026/07/10/095200286/ri-luncurkan-sistem-registri-unit-karbon-nasional-empat-proyek-mulai?utm_source=chatgpt.com"
   },
   {
     "text": "Perdagangan dunia tumbuh sekitar 4 persen pada Q1 2026.",
     "answer": "fact",
-    "explanation": "Laporan UNCTAD mencatat, perdagangan dunia tumbuh sekitar 4 persen pada Q1 2026. Perdagangan barang naik 4,8 persen, sedangkan perdagangan jasa tumbuh 1,6 persen dibanding kuartal sebelumnya."
+    "explanation": "Laporan UNCTAD mencatat, perdagangan dunia tumbuh sekitar 4 persen pada Q1 2026. Perdagangan barang naik 4,8 persen, sedangkan perdagangan jasa tumbuh 1,6 persen dibanding kuartal sebelumnya.",
+    "sourceUrl": "https://lestari.kompas.com/read/2026/08/04/192000586/unctad--ai-dan-kendaraan-listrik-dorong-pertumbuhan-perdagangan-dunia"
   },
   {
     "text": "Batu bara akan menjadi sumber energi paling penting di dunia dalam beberapa tahun mendatang.",
     "answer": "opinion",
-    "explanation": "Menurut laporan IEA, penggunaan batu bara untuk pembangkit listrik diperkirakan akan meningkat pada tahun 2026 akibat perang di Timur Tengah. Namun, tak berarti batu bara akan menjadi sumber energi “paling penting” di dunia dalam beberapa tahun mendatang."
+    "explanation": "Menurut laporan IEA, penggunaan batu bara untuk pembangkit listrik diperkirakan akan meningkat pada tahun 2026 akibat perang di Timur Tengah. Namun, tak berarti batu bara akan menjadi sumber energi “paling penting” di dunia dalam beberapa tahun mendatang.",
+    "sourceUrl": "https://lestari.kompas.com/read/2026/07/27/085500686/konflik-timur-tengah-dongkrak-pemakaian-pembangkit-listrik-tenaga-batu-bara?utm_source=chatgpt.com"
   },
   {
     "text": "Lebih dari 80 persen emisi karbon Piala Dunia 2026 diperkirakan berasal dari perjalanan penonton.",
     "answer": "fact",
-    "explanation": "Melansir Earth, Sabtu (18/7/2026), sebuah penelitian memperkirakan Piala Dunia 2026 menghasilkan sekitar 4,2 juta metrik ton CO2. Lebih dari 80 persen polusi tersebut diperkirakan berasal dari perjalanan para penonton, terutama yang menggunakan pesawat terbang."
+    "explanation": "Melansir Earth, Sabtu (18/7/2026), sebuah penelitian memperkirakan Piala Dunia 2026 menghasilkan sekitar 4,2 juta metrik ton CO2. Lebih dari 80 persen polusi tersebut diperkirakan berasal dari perjalanan para penonton, terutama yang menggunakan pesawat terbang.",
+    "sourceUrl": "https://lestari.kompas.com/read/2026/07/20/114600986/emisi-perjalanan-penonton-piala-dunia-jauh-lebih-tinggi-dibanding-acaranya"
   },
   {
     "text": "Semakin tinggi kandungan etanol dalam bensin, semakin irit pula konsumsi bahan bakar kendaraan.",
     "answer": "opinion",
-    "explanation": "Kandungan etanol tinggi dalam bensin tak selalu membuat konsumsi bahan bakar jadi lebih irit. Dampaknya terhadap konsumsi bahan bakar bergantung pada kadar etanol, formulasi bensin, teknologi dan kalibrasi mesin, serta kondisi kendaraan."
+    "explanation": "Kandungan etanol tinggi dalam bensin tak selalu membuat konsumsi bahan bakar jadi lebih irit. Dampaknya terhadap konsumsi bahan bakar bergantung pada kadar etanol, formulasi bensin, teknologi dan kalibrasi mesin, serta kondisi kendaraan.",
+    "sourceUrl": "https://otomotif.kompas.com/read/2026/09/11/102200015/kandungan-etanol-makin-tinggi-pengaruh-ke-mesin-dan-elektronik-mobil-"
   },
   {
     "text": "Ada Bank Sampah di Indonesia yang mampu memproduksi BBM dari olahan sampah plastik",
     "answer": "fact",
-    "explanation": "Bank Sampah Banjarnegara (BSB) mengembangkan teknologi untuk mengubah sampah plastik menjadi bahan bakar minyak (BBM). Produk ini dihasilkan dari proses pirolisis—memiliki karakteristik yang setara dengan BBM untuk mesin bensin dan diesel."
+    "explanation": "Bank Sampah Banjarnegara (BSB) mengembangkan teknologi untuk mengubah sampah plastik menjadi bahan bakar minyak (BBM). Produk ini dihasilkan dari proses pirolisis—memiliki karakteristik yang setara dengan BBM untuk mesin bensin dan diesel.",
+    "sourceUrl": "https://otomotif.kompas.com/read/2026/09/15/072200415/harga-bbm-sampah-plastik-bsb-lebih-murah-dari-pertamina?source=terkini_artikel"
   },
   {
     "text": "Google Gemini telah memiliki lebih dari 1 miliar pengguna aktif bulanan.",
     "answer": "fact",
-    "explanation": "Melalui blog resminya, Selasa (11/8/2026), Google mengumumkan Gemini telah memiliki lebih dari 1 miliar pengguna aktif bulanan, menjadikannya sebagai produk dengan pertumbuhan tercepat sepanjang sejarah Google."
+    "explanation": "Melalui blog resminya, Selasa (11/8/2026), Google mengumumkan Gemini telah memiliki lebih dari 1 miliar pengguna aktif bulanan, menjadikannya sebagai produk dengan pertumbuhan tercepat sepanjang sejarah Google.",
+    "sourceUrl": "https://tekno.kompas.com/read/2026/08/12/10310067/ai-gemini-tembus-1-miliar-pengguna-pecahkan-rekor-google?page=all"
   },
   {
     "text": "Sensus Ekonomi 2026 merupakan cara paling efektif untuk mengetahui jumlah pelaku usaha di Indonesia.",
     "answer": "opinion",
-    "explanation": "Deputi Bidang Neraca dan Analisis Statistik BPS RI Moh Edy Mahmud menyebut, sensus tidak dapat mengetahui jumlah pelaku usaha di lapangan. Ini mengingat entitas bisnis, khususnya UMKM, sangat dinamis pergerakannya."
+    "explanation": "Deputi Bidang Neraca dan Analisis Statistik BPS RI Moh Edy Mahmud menyebut, sensus tidak dapat mengetahui jumlah pelaku usaha di lapangan. Ini mengingat entitas bisnis, khususnya UMKM, sangat dinamis pergerakannya.",
+    "sourceUrl": "https://money.kompas.com/read/2026/08/08/110000626/bps-kebut-sensus-ekonomi-2026-capaian-sudah-86-persen"
   },
   {
     "text": "Indonesia berisiko mengalami kerugian hingga sekitar Rp 231,79 triliun akibat jika eskalasi perang Iran terus berlanjut.",
     "answer": "fact",
-    "explanation": "Analisis 350.org menyebut, Indonesia berisiko menanggung kerugian hingga 13 miliar dollar AS atau sekitar Rp 231,79 triliun akibat kenaikan harga minyak dunia hingga akhir 2026 jika eskalasi perang Iran terus berlanjut."
+    "explanation": "Analisis 350.org menyebut, Indonesia berisiko menanggung kerugian hingga 13 miliar dollar AS atau sekitar Rp 231,79 triliun akibat kenaikan harga minyak dunia hingga akhir 2026 jika eskalasi perang Iran terus berlanjut.",
+    "sourceUrl": "https://lestari.kompas.com/read/2026/08/13/161328686/harga-minyak-naik-indonesia-berisiko-rugi-rp-231-triliun-hingga-akhir-2026"
   },
   {
     "text": "Kebutuhan protein orang yang rutin berolahraga tidak hanya ditentukan oleh seberapa sering ia berolahraga",
     "answer": "fact",
-    "explanation": "Kebutuhan protein juga dipengaruhi berat badan, tingkat aktivitas, dan tujuan olahraga. Jadi, rutin olahraga tidak otomatis berarti seseorang membutuhkan protein dalam jumlah sangat tinggi."
+    "explanation": "Kebutuhan protein juga dipengaruhi berat badan, tingkat aktivitas, dan tujuan olahraga. Jadi, rutin olahraga tidak otomatis berarti seseorang membutuhkan protein dalam jumlah sangat tinggi.",
+    "sourceUrl": "https://lifestyle.kompas.com/read/2026/08/12/080500920/berapa-banyak-protein-yang-dibutuhkan-tubuh-jika-rutin-berolahraga-"
   },
   {
     "text": "Mengganti sikat gigi setiap bulan adalah cara terbaik untuk menjaga kesehatan mulut.",
     "answer": "opinion",
-    "explanation": "Artikel membahas kapan sikat gigi sebaiknya diganti, tetapi kata “cara terbaik” merupakan penilaian. Kesehatan mulut juga dipengaruhi kebiasaan menyikat gigi, teknik, makanan, dan pemeriksaan gigi."
+    "explanation": "Artikel membahas kapan sikat gigi sebaiknya diganti, tetapi kata “cara terbaik” merupakan penilaian. Kesehatan mulut juga dipengaruhi kebiasaan menyikat gigi, teknik, makanan, dan pemeriksaan gigi.",
+    "sourceUrl": "https://lifestyle.kompas.com/read/2026/07/22/073500920/seberapa-sering-sikat-gigi-diganti-ini-kata-dokter"
   },
   {
     "text": "Personal branding di dunia kerja tidak hanya berkaitan dengan penampilan, tetapi juga kompetensi dan komunikasi.",
     "answer": "fact",
-    "explanation": "Career Coach Nessia Ragil, SPsi, LCPC, mengatakan bahwa selain penampilan, hal yang juga menentukan keberlanjutan karier adalah kompetensi, track record, kapasitas diri, dan performa dalam bekerja."
+    "explanation": "Career Coach Nessia Ragil, SPsi, LCPC, mengatakan bahwa selain penampilan, hal yang juga menentukan keberlanjutan karier adalah kompetensi, track record, kapasitas diri, dan performa dalam bekerja.",
+    "sourceUrl": "https://lifestyle.kompas.com/read/2026/08/20/133500820/tips-membangun-personal-branding-di-dunia-kerja-tak-cuma-andalkan"
   },
   {
     "text": "Mengurangi garam pasti dapat mencegah penurunan daya ingat pada semua orang lanjut usia.",
     "answer": "opinion",
-    "explanation": "Dalam beberapa studi dan menurut sejumlah pakar, konsumsi garam berlebih bisa berdampak pada daya ingat. Namun, tidak berarti mengurangi konsumsi garam “pasti” dapat mencegah penurunan daya ingat."
+    "explanation": "Dalam beberapa studi dan menurut sejumlah pakar, konsumsi garam berlebih bisa berdampak pada daya ingat. Namun, tidak berarti mengurangi konsumsi garam “pasti” dapat mencegah penurunan daya ingat.",
+    "sourceUrl": "https://lifestyle.kompas.com/read/2026/08/04/080500420/asupan-garam-berlebih-picu-penurunan-daya-ingat-pada-pria-lansia?page=all"
   },
   {
     "text": "Di tengah tekanan ekonomi, berbelanja dapat memberikan rasa tenang bagi sebagian orang.",
     "answer": "fact",
-    "explanation": "Reportase Kompas.com mengenai fenomena “Lipstick Effect” menemukan bahwa aktivitas belanja di tengah tekanan ekonomi dapat memberikan rasa tenang. Namun, aktivitas itu kemudian menimbulkan pertanyaan dari para narasumber, apakah itu bentuk self-care atau pelarian?"
+    "explanation": "Reportase Kompas.com mengenai fenomena “Lipstick Effect” menemukan bahwa aktivitas belanja di tengah tekanan ekonomi dapat memberikan rasa tenang. Namun, aktivitas itu kemudian menimbulkan pertanyaan dari para narasumber, apakah itu bentuk self-care atau pelarian?",
+    "sourceUrl": "https://lifestyle.kompas.com/read/2026/08/14/140000120/senang-tapi-nyesel-dilema-belanja-di-tengah-ekonomi-sulit?page=all"
   }
 ];
 
@@ -148,12 +174,14 @@ let drag = null;
 const music = new Audio('audio/music-gameplay.mp3');
 const tapSound = new Audio('audio/tap.mp3');
 const swipeSound = new Audio('audio/swipe.mp3');
+const resultSound = new Audio('audio/result.mp3');
 music.loop = true;
 music.volume = 0.35;
 music.preload = 'metadata';
 tapSound.preload = 'auto';
 swipeSound.preload = 'auto';
-let soundMuted = false;
+resultSound.preload = 'auto';
+let musicMuted = false;
 let musicStarted = false;
 let instructionTimer = null;
 
@@ -167,7 +195,7 @@ function playAudio(audio, restart = false) {
 }
 
 function playEffect(audio) {
-  if (!soundMuted) playAudio(audio, true);
+  playAudio(audio, true);
 }
 
 function startMusic() {
@@ -176,12 +204,12 @@ function startMusic() {
 }
 
 $('#sound-toggle').addEventListener('click', () => {
-  soundMuted = !soundMuted;
-  [music, tapSound, swipeSound].forEach((audio) => { audio.muted = soundMuted; });
-  $('#sound-toggle img').src = soundMuted ? 'img/muted.svg' : 'img/unmute.svg';
-  $('#sound-toggle').setAttribute('aria-label', soundMuted ? 'Aktifkan suara' : 'Matikan suara');
-  $('#sound-toggle').setAttribute('aria-pressed', String(soundMuted));
-  if (!soundMuted && musicStarted) startMusic();
+  musicMuted = !musicMuted;
+  music.muted = musicMuted;
+  $('#sound-toggle img').src = musicMuted ? 'img/muted.svg' : 'img/unmute.svg';
+  $('#sound-toggle').setAttribute('aria-label', musicMuted ? 'Aktifkan musik' : 'Matikan musik');
+  $('#sound-toggle').setAttribute('aria-pressed', String(musicMuted));
+  if (!musicMuted && musicStarted) startMusic();
 });
 
 function showScreen(id) {
@@ -199,6 +227,12 @@ function showScreen(id) {
     music.pause();
     music.currentTime = 0;
     musicStarted = false;
+  }
+  if (id === 'result') {
+    playEffect(resultSound);
+  } else {
+    resultSound.pause();
+    resultSound.currentTime = 0;
   }
 }
 
@@ -325,6 +359,14 @@ async function answer(choice) {
   const explanation = $('#feedback-description');
   explanation.hidden = correct || question.answer === 'opinion';
   explanation.textContent = explanation.hidden ? '' : `Kenapa?\n\n${question.explanation}`;
+  if (!explanation.hidden && question.sourceUrl) {
+    const sourceLink = document.createElement('a');
+    sourceLink.textContent = 'Link';
+    sourceLink.href = question.sourceUrl;
+    sourceLink.target = '_blank';
+    sourceLink.rel = 'noopener noreferrer';
+    explanation.append('\n\nSumber: ', sourceLink);
+  }
   $('#next').setAttribute('aria-label',
     current === questions.length - 1 ? 'Lihat hasil' : correct ? 'Soal berikutnya' : 'Lanjut');
   const nextImage = $('#next img');
@@ -464,7 +506,10 @@ const suppressedAnswerClicks = new WeakSet();
     answer(button.id);
   });
 });
-dialog.addEventListener('click', nextQuestion);
+dialog.addEventListener('click', (event) => {
+  if (event.target.closest('a')) return;
+  nextQuestion();
+});
 dialog.addEventListener('cancel', (event) => event.preventDefault());
 
 card.addEventListener('keydown', (event) => {

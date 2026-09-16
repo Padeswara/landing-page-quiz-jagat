@@ -129,9 +129,11 @@ button:hover {
   display: none;
 }
 .question-progress {
-  width: 100%;
-  display: flex;
-  gap: 3px;
+    width: 100%;
+    display: flex;
+    gap: 3px;
+    padding: 4px 12px 0;
+
 }
 .question-progress > span {
   flex: 1;
@@ -166,6 +168,13 @@ button:hover {
 }
 .game:has(.play:not([hidden])) {
   background: url('img/bg-play.jpg') center / cover no-repeat;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+html:has(.play:not([hidden])),
+body:has(.play:not([hidden])) {
+  overflow: hidden;
+  overscroll-behavior: none;
 }
 .play-character {
   position: absolute;
@@ -190,14 +199,14 @@ button:hover {
   z-index: 1;
 }
 .play-book {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: auto;
-  display: block;
-  z-index: 0;
-  pointer-events: none;
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    display: block;
+    z-index: 0;
+    pointer-events: none;
 }
 
 .instruction {
@@ -309,12 +318,23 @@ button:hover {
   line-height: 1.5;
 }
 .play {
+  justify-content: center;
+  align-items: center;
   gap: 16px;
-  touch-action: pan-y;
+  touch-action: none;
   user-select: none;
 }
 .play > * {
   flex-shrink: 0;
+}
+.play-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  width: 100%;
 }
 .play-top {
   display: flex;
@@ -375,14 +395,11 @@ button:hover {
   margin: 0;
 }
 .card-stage {
-    position: absolute;
+    position: relative;
     display: flex;
     width: min(300px, calc(100% - 40px));
-    align-self: center;
-    top: 45px;
-    left: 0;
-    right: 0;
     margin: 0 auto;
+    bottom: -15px;
 }
 .card-answer-labels {
   position: absolute;
@@ -408,9 +425,9 @@ button:hover {
 .question-card {
   position: relative;
   z-index: 1;
-  width: 280px;
+  width: 100%;
   max-width: 100%;
-  height: 310px;
+  height: 400px;
   padding: 18px 28px 80px;
   display: flex;
   flex-direction: column;
@@ -467,14 +484,17 @@ button:hover {
   font-size: 8px;
   color: #aaa39b;
 }
+.answer-book-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 36px;
+  bottom: -60px;
+}
 .answer-buttons {
+    position: relative;
     display: flex;
     width: 80%;
     gap: 40px;
-    position: absolute;
-    bottom: 63px;
-    left: 0;
-    right: 0;
     margin: 0 auto;
 }
 .answer {
@@ -492,7 +512,7 @@ button:hover {
 }
 .answer img {
   display: block;
-  width: 100%;
+  width: 90px;
   height: auto;
   pointer-events: none;
 }
@@ -533,7 +553,7 @@ dialog.feedback-artwork {
 }
 dialog #feedback-description {
     position: absolute;
-    top: 335px;
+    top: 310px;
     width: 230px;
     max-height: 260px;
     overflow-y: auto;
@@ -544,7 +564,12 @@ dialog #feedback-description {
     left: 0;
     right: 0;
     margin: 0 auto;
-    height: 240px;
+    height: 250px;
+}
+#feedback-description a {
+  color: #0654c5;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 .feedback-image {
   display: block;
@@ -569,7 +594,7 @@ dialog.feedback-incorrect-fact {
 }
 .feedback-incorrect-fact .feedback-fact-top {
   position: absolute;
-  top: 70px;
+  top: 50px;
   left: 0;
   width: 200px;
   height: auto;
@@ -579,9 +604,11 @@ dialog.feedback-incorrect-fact {
 }
 .feedback-incorrect-fact .feedback-image {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: -40px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
   width: 380px;
   height: 500px;
   max-height: none;
@@ -592,7 +619,7 @@ dialog.feedback-incorrect-fact #feedback-description {
 }
 .feedback-incorrect-fact .next-image-button {
   position: absolute;
-  bottom: max(24px, env(safe-area-inset-bottom));
+  bottom: 80px;
   left: 0;
 }
 .next-image-button {

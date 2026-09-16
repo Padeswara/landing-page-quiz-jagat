@@ -16,7 +16,7 @@
       <div class="game-toolbar">
         <div id="question-progress" class="question-progress" role="progressbar" aria-label="Soal terjawab" aria-valuemin="0" aria-valuenow="0" hidden></div>
         <div class="game-toolbar-buttons">
-          <button id="sound-toggle" class="game-sound" type="button" aria-label="Matikan suara" aria-pressed="false" hidden>
+          <button id="sound-toggle" class="game-sound" type="button" aria-label="Matikan musik" aria-pressed="false" hidden>
             <img src="img/unmute.svg" alt="" draggable="false" />
           </button>
           <button class="game-share" type="button" data-share="native" aria-label="Bagikan kuis">
@@ -74,42 +74,46 @@
       >
         <img class="play-character play-character-1" src="img/char-1.png" alt="" draggable="false" />
         <img class="play-character play-character-2" src="img/char-2.png" alt="" draggable="false" />
-        <img class="play-book" src="img/book.png" alt="" draggable="false" />
-        <div class="card-stage">
-          <div class="card-under card-under-middle" aria-hidden="true"></div>
-          <article
-            id="next-question-card"
-            class="question-card card-under-front question-preview"
-            aria-hidden="true"
-            inert
-            hidden
-          >
-            <p id="next-question-text"></p>
-            <img class="card-answer-labels" src="img/fakta-opini.png" alt="" draggable="false" />
-            <div class="card-bottom">
-              <span>BACA. PIKIR. PILIH.</span>
+        <div class="play-content">
+          <div class="card-stage">
+            <div class="card-under card-under-middle" aria-hidden="true"></div>
+            <article
+              id="next-question-card"
+              class="question-card card-under-front question-preview"
+              aria-hidden="true"
+              inert
+              hidden
+            >
+              <p id="next-question-text"></p>
+              <img class="card-answer-labels" src="img/fakta-opini.png" alt="" draggable="false" />
+              <div class="card-bottom">
+                <span>BACA. PIKIR. PILIH.</span>
+              </div>
+            </article>
+            <article
+              id="question-card"
+              class="question-card"
+              tabindex="0"
+              aria-label="Kartu pertanyaan. Gunakan panah kiri untuk fakta atau panah kanan untuk opini."
+            >
+              <p id="question-text" aria-live="polite"></p>
+              <img class="card-answer-labels" src="img/fakta-opini.png" alt="Fakta atau Opini" draggable="false" />
+              <div class="card-bottom">
+                <span>BACA. PIKIR. PILIH.</span>
+              </div>
+            </article>
+          </div>
+          <div class="answer-book-wrapper">
+            <img class="play-book" src="img/book.png" alt="" draggable="false" />
+            <div class="answer-buttons">
+              <button id="fact" class="answer fact" type="button" aria-label="Jawab fakta">
+                <img src="img/swipe-fakta.png" alt="Swipe kiri untuk fakta" draggable="false" />
+              </button>
+              <button id="opinion" class="answer opinion" type="button" aria-label="Jawab opini">
+                <img src="img/swipe-opini.png" alt="Swipe kanan untuk opini" draggable="false" />
+              </button>
             </div>
-          </article>
-          <article
-            id="question-card"
-            class="question-card"
-            tabindex="0"
-            aria-label="Kartu pertanyaan. Gunakan panah kiri untuk fakta atau panah kanan untuk opini."
-          >
-            <p id="question-text" aria-live="polite"></p>
-            <img class="card-answer-labels" src="img/fakta-opini.png" alt="Fakta atau Opini" draggable="false" />
-            <div class="card-bottom">
-              <span>BACA. PIKIR. PILIH.</span>
-            </div>
-          </article>
-        </div>
-        <div class="answer-buttons">
-          <button id="fact" class="answer fact" type="button" aria-label="Jawab fakta">
-            <img src="img/swipe-fakta.png" alt="Swipe kiri untuk fakta" draggable="false" />
-          </button>
-          <button id="opinion" class="answer opinion" type="button" aria-label="Jawab opini">
-            <img src="img/swipe-opini.png" alt="Swipe kanan untuk opini" draggable="false" />
-          </button>
+          </div>
         </div>
       </section>
 
