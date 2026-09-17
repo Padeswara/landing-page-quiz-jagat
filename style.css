@@ -79,6 +79,23 @@ button:hover {
     0 2px 8px rgb(36 35 41 / 4%),
     inset 0 1px 0 rgb(255 255 255 / 80%); */
 }
+.jagat-logo {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 80px;
+  height: auto;
+  z-index: 4;
+  pointer-events: none;
+}
+.game:has(.play:not([hidden])) .jagat-logo {
+  top: 35px;
+}
+.game:has(.instruction:not([hidden])) .jagat-logo {
+  display: none;
+}
 .game-toolbar {
   position: absolute;
   top: 0;
@@ -95,10 +112,11 @@ button:hover {
   pointer-events: none;
 }
 .game-toolbar-buttons {
-  width: 100%;
+  width: 95%;
   display: flex;
   justify-content: flex-end;
   gap: 4px;
+  margin: 0 auto;
 }
 .game-sound {
   margin-right: auto;
@@ -248,10 +266,9 @@ body:has(.play:not([hidden])) {
 }
 
 .welcome-logo {
-    /* object-position: center bottom; */
-    width: 360px;
+    width: 320px;
     position: absolute;
-    top: 30px;
+    top: 60px;
     height: auto;
     left: 0;
     right: 0;
@@ -340,6 +357,7 @@ body:has(.play:not([hidden])) {
   align-items: center;
   gap: 0;
   width: 100%;
+  margin-top: 40px;
 }
 .play-top {
   display: flex;
@@ -432,7 +450,7 @@ body:has(.play:not([hidden])) {
   z-index: 1;
   width: 100%;
   max-width: 100%;
-  height: 400px;
+  height: 350px;
   padding: 18px 28px 80px;
   display: flex;
   flex-direction: column;
@@ -718,11 +736,11 @@ dialog p:not(.eyebrow) {
   line-height: 0;
 }
 .result-logo img {
-  display: block;
-  width: 320px;
-  height: auto;
-  margin: 0 auto;
-  margin-top: 30px;
+    display: block;
+    width: 320px;
+    height: auto;
+    margin: 0 auto;
+    margin-top: 65px;
 }
 .result-restart img {
   display: block;
@@ -748,39 +766,39 @@ dialog p:not(.eyebrow) {
 }
 /* Customize width and height independently for each character. */
 .result-character[data-character="terkecoh"] {
-  width: 266px;
-  height: auto;
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  top: -30px;
-}
-.result-character[data-character="jeli"] {
-    width: 250px;
+    width: 220px;
     height: auto;
     position: absolute;
-    top: -9px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 10px;
+}
+.result-character[data-character="jeli"] {
+    width: 186px;
+    height: auto;
+    position: absolute;
+    top: 25px;
     left: 0;
     right: 0;
     margin: 0 auto;
 }
 .result-character[data-character="paling-jeli"] {
-    width: 230px;
+    width: 180px;
     height: auto;
     position: absolute;
     left: 0;
     right: 0;
-    top: -50px;
+    top: -5px;
     margin: 0 auto;
 }
 .result-character[data-character="jenius"] {
-    width: 340px;
+  width: 290px;
     height: auto;
     position: absolute;
     left: 0;
     right: 0;
-    top: -30px;
+    top: 10px;
     margin: 0 auto;
 }
 #result-message {
@@ -924,7 +942,7 @@ dialog p:not(.eyebrow) {
   }
   dialog #feedback-description {
     width: 100%;
-    padding: 0 50px;
+    padding: 0 70px;
   }
 }
 

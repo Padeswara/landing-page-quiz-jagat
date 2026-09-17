@@ -377,8 +377,18 @@ async function answer(choice) {
     sourceLink.rel = 'noopener noreferrer';
     explanation.append('\n\nSumber: ', sourceLink);
   }
-  $('#next').setAttribute('aria-label',
-    current === questions.length - 1 ? 'Lihat hasil' : correct ? 'Soal berikutnya' : 'Lanjut');
+  const isLastQuestion = current === questions.length - 1;
+  $('#next').hidden = isLastQuestion;
+  $('#next').setAttribute('aria-label', correct ? 'Soal berikutnya' : 'Lanjut');
+  const feedbackVisual = $('.feedback-visual');
+  feedbackVisual.tabIndex = isLastQuestion ? 0 : -1;
+  if (isLastQuestion) {
+    feedbackVisual.setAttribute('role', 'button');
+    feedbackVisual.setAttribute('aria-label', 'Lihat hasil');
+  } else {
+    feedbackVisual.removeAttribute('role');
+    feedbackVisual.removeAttribute('aria-label');
+  }
   const nextImage = $('#next img');
   nextImage.src = correct ? 'img/button-next-question.png' : 'img/button-lanjut.png';
   await Promise.all([
@@ -387,7 +397,7 @@ async function answer(choice) {
     nextImage.decode().catch(() => {}),
   ]);
   dialog.showModal();
-  $('#next').focus();
+  (isLastQuestion ? feedbackVisual : $('#next')).focus();
 }
 
 const resultCharacters = {
@@ -581,6 +591,13 @@ dialog.addEventListener('click', (event) => {
   nextQuestion();
 });
 dialog.addEventListener('cancel', (event) => event.preventDefault());
+$('.feedback-visual').addEventListener('keydown', (event) => {
+  if (event.target !== event.currentTarget || current !== questions.length - 1) return;
+  if (event.key === 'Enter' || event.key === ' ') {
+    event.preventDefault();
+    nextQuestion();
+  }
+});
 
 card.addEventListener('keydown', (event) => {
   if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
