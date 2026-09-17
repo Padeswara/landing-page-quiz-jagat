@@ -160,6 +160,14 @@ const questionBank = [
 const questions = questionBank.slice(0, 10);
 
 const $ = (selector) => document.querySelector(selector);
+document.addEventListener('pointerdown', () => {
+  document.documentElement.dataset.inputMethod = 'pointer';
+}, true);
+document.addEventListener('keydown', (event) => {
+  if (['Tab', 'Enter', ' ', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(event.key)) {
+    document.documentElement.dataset.inputMethod = 'keyboard';
+  }
+}, true);
 const card = $('#question-card');
 const dialog = $('#feedback');
 const cardPoses = [
@@ -231,6 +239,7 @@ function showScreen(id) {
   }
   if (id === 'result') {
     playEffect(resultSound);
+    prepareInstagramImage();
   } else {
     resultSound.pause();
     resultSound.currentTime = 0;
@@ -443,7 +452,68 @@ async function copyShareText(text, platform, statusSelector = '#share-status') {
   }
 }
 
+const instagramFiles = new Map();
+const instagramFileRequests = new Map();
+let instagramShareBusy = false;
+
+function getInstagramImagePath() {
+  const finalScore = Math.round((score / questions.length) * 100);
+  const range = finalScore === 100 ? '100' : finalScore >= 80 ? '80-90' : finalScore >= 60 ? '60-70' : '10-50';
+  return 'img/imgshare-' + range + '.png';
+}
+
+function prepareInstagramImage(path = getInstagramImagePath()) {
+  if (!instagramFileRequests.has(path)) {
+    const request = fetch(path).then(async (response) => {
+      if (!response.ok) throw new Error('Image unavailable');
+      const blob = await response.blob();
+      const file = new File([blob], path.split('/').pop(), { type: 'image/png' });
+      instagramFiles.set(path, file);
+      return file;
+    }).catch(() => {
+      instagramFileRequests.delete(path);
+      return null;
+    });
+    instagramFileRequests.set(path, request);
+  }
+  return instagramFileRequests.get(path);
+}
+
+function showInstagramDownload(path) {
+  const status = $('#share-status');
+  const link = document.createElement('a');
+  link.href = path;
+  link.download = path.split('/').pop();
+  link.textContent = 'Unduh gambar';
+  status.textContent = 'Berbagi gambar tidak tersedia. ';
+  status.append(link, ', lalu bagikan melalui Instagram.');
+  link.click();
+}
+
+async function shareInstagramImage() {
+  if (instagramShareBusy) return;
+  const path = getInstagramImagePath();
+  instagramShareBusy = true;
+  $('#share-status').textContent = '';
+  try {
+    const file = instagramFiles.get(path) || await prepareInstagramImage(path);
+    if (file && navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
+      await navigator.share({ files: [file], title: 'Bagikan ke Story' });
+    } else {
+      showInstagramDownload(path);
+    }
+  } catch (error) {
+    if (error.name !== 'AbortError') showInstagramDownload(path);
+  } finally {
+    instagramShareBusy = false;
+  }
+}
+
 async function shareResult(platform) {
+  if (platform === 'instagram') {
+    await shareInstagramImage();
+    return;
+  }
   const url = new URL(window.location.href);
   url.hash = '';
   const text = $('#result').hidden
@@ -453,7 +523,7 @@ async function shareResult(platform) {
   $('#share-status').textContent = '';
   $('#game-share-status').textContent = '';
 
-  if (platform === 'instagram' || platform === 'native') {
+  if (platform === 'native') {
     if (navigator.share) {
       try {
         await navigator.share({ title: 'Kuis Fakta atau Opini', text, url: url.href });
@@ -462,8 +532,7 @@ async function shareResult(platform) {
         if (error.name === 'AbortError') return;
       }
     }
-    await copyShareText(fullText, platform === 'instagram' ? 'Instagram' : 'media sosial',
-      platform === 'native' ? '#game-share-status' : '#share-status');
+    await copyShareText(fullText, 'media sosial', '#game-share-status');
     return;
   }
 

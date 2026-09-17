@@ -42,10 +42,15 @@ button:focus-visible,
   outline: 3px solid #a68be9;
   outline-offset: 4px;
 }
+html[data-input-method="pointer"] button:focus,
+html[data-input-method="pointer"] [tabindex]:focus {
+  outline: none;
+}
 button:disabled {
   cursor: default;
 }
-button {
+button,
+[tabindex] {
   -webkit-tap-highlight-color: transparent;
 }
 button:hover {
