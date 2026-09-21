@@ -160,6 +160,12 @@ const questionBank = [
 const questions = questionBank.slice(0, 10);
 
 const $ = (selector) => document.querySelector(selector);
+
+// Hide the toolbar share button and Instagram icon inside Instagram's in-app browser.
+if (/Instagram/i.test(navigator.userAgent)) {
+  $('.game-share').hidden = true;
+  $('.share-icons [data-share="instagram"]').hidden = true;
+}
 document.addEventListener('pointerdown', () => {
   document.documentElement.dataset.inputMethod = 'pointer';
 }, true);
@@ -527,8 +533,8 @@ async function shareResult(platform) {
   const url = new URL(window.location.href);
   url.hash = '';
   const text = $('#result').hidden
-    ? 'Bisa bedakan fakta dan opini? Yuk, ikuti kuis ini dan uji ketelitianmu!'
-    : `Aku mendapat skor ${Math.round((score / questions.length) * 100)}/100 di kuis Fakta atau Opini! Yuk, coba dan lihat skormu!`;
+    ? 'Bisa bedakan fakta dan opini? Yuk, ikuti Quiz ini dan uji ketelitianmu!'
+    : `Aku mendapat skor ${Math.round((score / questions.length) * 100)}/100 di Quiz Fakta atau Opini! Yuk, coba dan lihat skormu!`;
   const fullText = `${text}\n${url.href}`;
   $('#share-status').textContent = '';
   $('#game-share-status').textContent = '';
@@ -536,7 +542,7 @@ async function shareResult(platform) {
   if (platform === 'native') {
     if (navigator.share) {
       try {
-        await navigator.share({ title: 'Kuis Fakta atau Opini', text, url: url.href });
+        await navigator.share({ title: 'Quiz Fakta atau Opini', text, url: url.href });
         return;
       } catch (error) {
         if (error.name === 'AbortError') return;
